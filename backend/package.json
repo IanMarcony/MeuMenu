@@ -5,9 +5,11 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "start": "ts-node src/shared/infra/http/server.ts",
-    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+    "migration:create": "typeorm-ts-node-commonjs migration:create ./src/shared/infra/typeorm/database/migrations/store",
+    "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/shared/infra/typeorm/database/migrations/store",
+    "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
@@ -33,10 +35,12 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
     "typeorm": "^0.3.11"
