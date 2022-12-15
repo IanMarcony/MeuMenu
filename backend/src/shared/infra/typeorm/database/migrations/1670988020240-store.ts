@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 import { AppDataSource } from '../../../../../data-source';
-import Status from '../../../../../modules/store/infra/typeorm/entities/Status';
+import Status from '../../../../../modules/stores/infra/typeorm/entities/Status';
 
 export class store1670988020240 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
