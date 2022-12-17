@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'contract_type' })
 export default class ContractType {
   @PrimaryGeneratedColumn()
   id: number;
