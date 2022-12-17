@@ -18,6 +18,9 @@ export default class User {
   email: string;
 
   @Column({ type: 'text' })
+  cpf: string;
+
+  @Column({ type: 'text' })
   password: string;
 
   @CreateDateColumn()

@@ -5,11 +5,13 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Product from './Product';
 
-@Entity()
+@Entity({ name: 'menu_section' })
 export default class MenuSection {
   @PrimaryGeneratedColumn()
   id: number;
@@ -20,6 +22,9 @@ export default class MenuSection {
   @ManyToOne(() => Store)
   @JoinColumn({ name: 'id_store' })
   store: Store;
+
+  @OneToMany(() => Product, (product) => product.menu_section)
+  products: Product[];
 
   @CreateDateColumn()
   created_at: Date;

@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import MenuSection from './MenuSection';
-@Entity()
+@Entity({ name: 'products' })
 export default class Product {
   @PrimaryGeneratedColumn()
   id: number;

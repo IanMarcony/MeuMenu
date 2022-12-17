@@ -10,6 +10,11 @@ export default class UsersRepository implements IUserRepository {
   constructor() {
     this.ormRepository = AppDataSource.getRepository(User);
   }
+  public async findByCPF(cpf: string): Promise<User | null> {
+    const user = await this.ormRepository.findOne({ where: { cpf } });
+
+    return user;
+  }
 
   public async findById(id: number): Promise<User | null> {
     const user = await this.ormRepository.findOne({ where: { id } });
