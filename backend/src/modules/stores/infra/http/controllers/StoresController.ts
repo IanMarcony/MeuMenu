@@ -41,13 +41,20 @@ export default class StoresController {
   }
 
   public async update(req: Request, res: Response): Promise<Response> {
-    const { description, phone_number, open_hour, close_hour, contract_type } =
-      req.body;
+    const {
+      name,
+      description,
+      phone_number,
+      open_hour,
+      close_hour,
+      contract_type,
+    } = req.body;
     const { id: id_admin } = req.user;
 
     const updateStore = container.resolve(UpdateStoreService);
 
     const store = await updateStore.execute({
+      name,
       description,
       phone_number,
       open_hour,

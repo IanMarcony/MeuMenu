@@ -67,6 +67,7 @@ export default class CreateStoreService {
 
     const store = await this.storesRepository.create({
       name,
+      name_code: name.replace(' ', '-'),
       description,
       phone_number,
       url_banner_image,

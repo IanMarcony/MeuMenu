@@ -5,12 +5,14 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import ContractType from './ContractType';
 import Status from './Status';
+import MenuSection from '../../../../products/infra/typeorm/entities/MenuSection';
 
 @Entity({ name: 'store' })
 export default class Store {
@@ -19,6 +21,9 @@ export default class Store {
 
   @Column({ type: 'varchar', length: 255, nullable: false })
   name: string;
+
+  @Column({ type: 'varchar', length: 255, nullable: false })
+  name_code: string;
 
   @Column({ type: 'text', nullable: false })
   description: string;
@@ -49,6 +54,13 @@ export default class Store {
 
   @Column({ type: 'int' })
   contract_type_id: number;
+
+  @OneToMany(() => MenuSection, (menu_section) => menu_section.store, {
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'NO ACTION',
+  })
+  menuSections: MenuSection[];
 
   @ManyToOne(() => Status)
   @JoinColumn({ name: 'status_id', foreignKeyConstraintName: 'fk_status_id' })

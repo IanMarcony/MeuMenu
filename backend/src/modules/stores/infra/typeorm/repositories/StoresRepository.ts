@@ -20,6 +20,10 @@ export default class StoresRepository implements IStoresRepository {
     const store = await this.ormRepository.findOne({ where: { name } });
     return store;
   }
+  public async findByNameCode(name_code: string): Promise<Store | null> {
+    const store = await this.ormRepository.findOne({ where: { name_code } });
+    return store;
+  }
   public async findByIdAdmin(id_admin: number): Promise<Store | null> {
     const store = await this.ormRepository.findOne({ where: { id_admin } });
     return store;
@@ -37,7 +41,7 @@ export default class StoresRepository implements IStoresRepository {
   public async updateStatus(name: string, id_status: number): Promise<void> {
     const store = await this.ormRepository.findOne({ where: { name } });
     if (store) {
-      store.id_status = id_status;
+      store.status_id = id_status;
     }
   }
 }
