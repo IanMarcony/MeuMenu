@@ -14,6 +14,10 @@ import StatusRepository from '@modules/stores/infra/typeorm/repositories/StatusR
 import IStatusRepository from '@modules/stores/repositories/IStatusRepository';
 import ContractTypeRepository from '@modules/stores/infra/typeorm/repositories/ContractTypeRepository';
 import IContractTypesRepository from '@modules/stores/repositories/IContractTypesRepository';
+import IProductsRepository from '@modules/products/repositories/IProductsRepository';
+import ProductsRepository from '@modules/products/infra/typeorm/repositories/ProductsRepository';
+import IMenuSectionsRepository from '@modules/products/repositories/IMenuSectionsRepository';
+import MenuSectionsRepository from '@modules/products/infra/typeorm/repositories/MenuSectionsRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -38,4 +42,14 @@ container.registerSingleton<IStatusRepository>(
 container.registerSingleton<IContractTypesRepository>(
   'ContractTypeRepository',
   ContractTypeRepository,
+);
+
+container.registerSingleton<IProductsRepository>(
+  'ProductsRepository',
+  ProductsRepository,
+);
+
+container.registerSingleton<IMenuSectionsRepository>(
+  'MenuSectionsRepository',
+  MenuSectionsRepository,
 );

@@ -1,4 +1,3 @@
-import Store from '../../../../stores/infra/typeorm/entities/Store';
 import {
   Column,
   CreateDateColumn,
@@ -8,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Store from '../../../../stores/infra/typeorm/entities/Store';
 import MenuSection from './MenuSection';
 @Entity({ name: 'products' })
 export default class Product {
@@ -24,9 +24,15 @@ export default class Product {
   price: number;
 
   @Column({ type: 'text' })
-  url_image_product: string;
+  image_product_filename: string;
 
-  @ManyToOne(() => MenuSection)
+  @Column({ type: 'int' })
+  id_menu_section: number;
+
+  @Column({ type: 'int' })
+  id_store: number;
+
+  @ManyToOne(() => MenuSection, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'id_menu_section' })
   menu_section: MenuSection;
 

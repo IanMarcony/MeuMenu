@@ -1,5 +1,6 @@
 export default interface ICreateStoreDTO {
   name: string;
+  name_code: string;
   description: string;
   phone_number: string;
   url_profile_image: string;

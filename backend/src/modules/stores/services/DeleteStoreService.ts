@@ -20,7 +20,7 @@ export default class DeleteStoreService {
     const store = await this.storesRepository.findByIdAdmin(id_admin);
 
     if (!store) {
-      throw new AppError('Only authenticated users can change avatar.', 401);
+      throw new AppError('Only authenticated users can delete store.', 401);
     }
 
     if (store.url_banner_image) {
