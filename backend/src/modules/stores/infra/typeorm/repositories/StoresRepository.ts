@@ -10,6 +10,14 @@ export default class StoresRepository implements IStoresRepository {
   constructor() {
     this.ormRepository = AppDataSource.getRepository(Store);
   }
+  public async findAll(): Promise<Store[]> {
+    return await this.ormRepository.find();
+  }
+
+  public async findById(id: number): Promise<Store | null> {
+    const store = await this.ormRepository.findOne({ where: { id } });
+    return store;
+  }
 
   public async create(data: ICreateStoreDTO): Promise<Store> {
     const store = this.ormRepository.create(data);

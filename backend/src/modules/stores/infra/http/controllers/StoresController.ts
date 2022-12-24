@@ -1,5 +1,6 @@
 import CreateStoreService from '@modules/stores/services/CreateStoreService';
 import DeleteStoreService from '@modules/stores/services/DeleteStoreService';
+import ListStoreSuperUserService from '@modules/stores/services/ListStoreSuperUserService';
 import UpdateStoreService from '@modules/stores/services/UpdateStoreService';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
@@ -76,5 +77,17 @@ export default class StoresController {
     });
 
     return res.status(204).json();
+  }
+
+  public async index(req: Request, res: Response): Promise<Response> {
+    const { id: id_admin } = req.user;
+
+    const listStores = container.resolve(ListStoreSuperUserService);
+
+    const stores = await listStores.execute({
+      id_admin,
+    });
+
+    return res.status(200).json(stores);
   }
 }

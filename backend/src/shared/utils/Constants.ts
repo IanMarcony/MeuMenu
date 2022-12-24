@@ -1,4 +1,10 @@
 export default {
+  StatusTypeID: {
+    ACTIVE: 1,
+    DEACTIVE: 2,
+    PEDING_PAYMENT: 3,
+  },
+
   StatusType: {
     ACTIVE: 'ACTIVE',
     DEACTIVE: 'DEACTIVE',

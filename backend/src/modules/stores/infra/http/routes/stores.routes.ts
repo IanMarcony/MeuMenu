@@ -19,6 +19,7 @@ storesRouter.use(ensureAuthenticated);
 
 storesRouter.post('/', upload.any(), storesController.create);
 storesRouter.put('/', storesController.update);
+storesRouter.get('/', storesController.index);
 storesRouter.delete('/', storesController.delete);
 
 storesRouter.patch('/status', statusStoreController.update);
