@@ -1,5 +1,6 @@
 import IStoresRepository from '@modules/stores/repositories/IStoresRepository';
 import AppError from '@shared/errors/AppError';
+import Constants from '@shared/utils/Constants';
 import { inject, injectable } from 'tsyringe';
 import MenuSection from '../infra/typeorm/entities/MenuSection';
 import IMenuSectionsRepository from '../repositories/IMenuSectionsRepository';
@@ -22,6 +23,10 @@ export default class ListProductsStoresService {
 
     if (!store) {
       throw new AppError('Store not found');
+    }
+
+    if (store.status_id !== Constants.StatusTypeID.ACTIVE) {
+      throw new AppError('Store temporaly unavailable');
     }
 
     const menuSections = await this.menuSectionsRepository.findAll(store.id);

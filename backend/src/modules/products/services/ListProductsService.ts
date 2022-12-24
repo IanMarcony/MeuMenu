@@ -1,9 +1,7 @@
 import IStoresRepository from '@modules/stores/repositories/IStoresRepository';
 import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
-import MenuSection from '../infra/typeorm/entities/MenuSection';
 import Product from '../infra/typeorm/entities/Product';
-import IMenuSectionsRepository from '../repositories/IMenuSectionsRepository';
 import IProductsRepository from '../repositories/IProductsRepository';
 
 interface IRequest {
