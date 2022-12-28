@@ -18,6 +18,12 @@ export default class User {
   email: string;
 
   @Column({ type: 'text' })
+  cpf: string;
+
+  @Column({ type: 'boolean', default: false })
+  is_super_user: boolean;
+
+  @Column({ type: 'text' })
   password: string;
 
   @CreateDateColumn()

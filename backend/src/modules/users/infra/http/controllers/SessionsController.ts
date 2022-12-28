@@ -11,6 +11,11 @@ export default class SessionsController {
     const { user, token } = await authenticateUser.execute({ email, password });
 
     delete user.password;
+    delete user.id;
+
+    if (!user.is_super_user) {
+      delete user.is_super_user;
+    }
 
     return res.status(201).json({ user, token });
   }

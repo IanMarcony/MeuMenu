@@ -11,9 +11,3 @@ services:
     environment:
       MYSQL_DATABASE: store_db
       MYSQL_ROOT_PASSWORD: storeroot
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
