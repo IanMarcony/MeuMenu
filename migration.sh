@@ -1,1 +1,1 @@
-docker-compose up migration -d
+docker compose up migration -d
