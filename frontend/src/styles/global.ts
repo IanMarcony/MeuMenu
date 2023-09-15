@@ -8,12 +8,12 @@ export default createGlobalStyle`
     box-sizing:border-box;
   }
   body{
-    background:#ddd;
+    background:#FFF;
     color:#000;
     -webkit-font-smoothing:antialiased;
   }
   body,input, button{
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', serif;
     font-size:16px;
   }
   h1,h2,h3,h4,h5,h6,strong{
@@ -21,5 +21,9 @@ export default createGlobalStyle`
   }
   button,a {
     cursor:pointer;
+  }
+
+  button{
+    border: none ;
   }
 `;
